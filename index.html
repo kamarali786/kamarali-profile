@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamarali Maknojiya | Senior Backend Developer | PHP Laravel Expert</title>
+    <!-- Favicon -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23FF2D20;stop-opacity:1' /><stop offset='100%' style='stop-color:%23777BB4;stop-opacity:1' /></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><text x='50%' y='50%' font-family='Arial, sans-serif' font-size='48' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>KM</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body class="no-copy no-drag">
+    <!-- Protection Overlay (Initially Hidden) -->
+    <div class="protection-overlay" id="protectionOverlay" style="display: none;">
+        <div class="protection-content">
+            <div style="font-size: 3rem; color: var(--laravel); margin-bottom: 1rem;">🔒</div>
+            <h2 style="color: var(--terminal-green); margin-bottom: 1rem;">Developer Tools Detected</h2>
+            <p style="color: var(--light); margin-bottom: 1.5rem; line-height: 1.6;">
+                This portfolio is protected against unauthorized copying.<br>
+                Developer tools have been disabled for this page.
+            </p>
+            <p style="color: var(--terminal-blue); margin-bottom: 2rem; font-size: 0.9rem;">
+                If you're interested in the code or want to collaborate,<br>
+                please contact me directly via the contact form!
+            </p>
+            <button onclick="location.reload()" style="
+                background: linear-gradient(135deg, var(--laravel), var(--php));
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            ">Reload Page</button>
+        </div>
+    </div>
+
+    <!-- Terminal Header -->
+    <div class="terminal-header">
+        <div class="terminal-dots">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yellow"></div>
+            <div class="terminal-dot dot-green"></div>
+        </div>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">KM</div>
+                <div class="logo-text">
+                    <div class="logo-name">Kamarali Maknojiya</div>
+                    <div class="logo-title">Backend Developer</div>
+                </div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>PHP <span class="typing-text">Backend Developer</span></h1>
+
+                    <p class="hero-tagline">
+                        PHP & Laravel Developer | REST APIs | MySQL
+                    </p>
+
+                    <p class="hero-description">
+                        PHP Backend Developer with around 1 year of hands-on experience in building
+                        scalable web applications using Laravel, MySQL, and RESTful APIs.
+                        Passionate about writing clean, secure, and maintainable code following
+                        MVC architecture and best coding practices.
+                    </p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge badge-php">PHP</span>
+                        <span class="tech-badge badge-laravel">Laravel</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">REST APIs</span>
+                        <span class="tech-badge">Git & GitHub</span>
+                        <span class="tech-badge">Postman</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">jQuery</span>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            Get In Touch <i class="fas fa-arrow-right"></i>
+                        </a>
+
+                        <button id="download-resume" class="btn btn-secondary">
+                            <span class="flex items-center text-gray-700 dark:text-gray-300">
+                                <i class="fas fa-download mr-3 group-hover:animate-bounce"></i> Resume
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <div class="profile-bg"></div>
+                        <div class="profile-image">
+                            <img src="assets/imgs/image.png" alt="KM">
+                        </div>
+
+                        <div class="profile-info">
+                            <h3>Kamarali Maknojiya</h3>
+                            <p>PHP Backend Developer</p>
+
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="stat-number">4+</span>
+                                    <span class="stat-label">Projects</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">1+</span>
+                                    <span class="stat-label">Year Exp</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">100%</span>
+                                    <span class="stat-label">Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-elements">
+            <div class="floating-element element-php"><i class="fab fa-php"></i></div>
+            <div class="floating-element element-laravel"><i class="fab fa-laravel"></i></div>
+            <div class="floating-element element-db"><i class="fas fa-database"></i></div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">PHP & Laravel Backend Development</p>
+                <div class="section-line">
+                    <div class="line-animation"></div>
+                </div>
+            </div>
+
+            <div class="skills-showcase">
+                <!-- Skill Progress Bars -->
+                <div class="skill-progress-container">
+                    <div class="progress-section">
+                        <h3 class="progress-title">Backend Mastery</h3>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>PHP Development</span>
+                                <span class="progress-percent" data-target="95">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>Laravel Framework</span>
+                                <span class="progress-percent" data-target="85">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>RESTful APIs</span>
+                                <span class="progress-percent" data-target="90">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>MySQL Database</span>
+                                <span class="progress-percent" data-target="88">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-section">
+                        <h3 class="progress-title">Frontend & Tools</h3>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>HTML/CSS</span>
+                                <span class="progress-percent" data-target="92">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>JavaScript & jQuery</span>
+                                <span class="progress-percent" data-target="80">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>Bootstrap</span>
+                                <span class="progress-percent" data-target="87">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="87"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>Git & Version Control</span>
+                                <span class="progress-percent" data-target="82">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Wheel Animation -->
+                <div class="skill-wheel-container">
+                    <div class="wheel">
+                        <div class="wheel-center">
+                            <span>KM</span>
+                            <div class="center-glow"></div>
+                        </div>
+                        <div class="wheel-item php" data-index="0">
+                            <i class="fab fa-php"></i>
+                        </div>
+                        <div class="wheel-item laravel" data-index="1">
+                            <i class="fab fa-laravel"></i>
+                        </div>
+                        <div class="wheel-item mysql" data-index="2">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="wheel-item js" data-index="3">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <div class="wheel-item git" data-index="4">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+                        <div class="wheel-item api" data-index="5">
+                            <i class="fab fa-bootstrap"></i>
+                        </div>
+                    </div>
+                    <div class="wheel-info">
+                        <h3>Core Skills Wheel</h3>
+                        <p>Hover over skills to see details</p>
+                        <div class="skill-detail" id="skillDetail">
+                            <div class="detail-content">
+                                <i class="fab fa-php"></i>
+                                <h4>PHP Development</h4>
+                                <p>Building dynamic web applications with PHP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">Hands-on Development Work</p>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Site Pro Project</h3>
+                        <ul>
+                            <li>Created multiple modules in the master admin panel using Laravel and Blade.</li>
+                            <li>Implemented frontend integration using Bootstrap and jQuery.</li>
+                            <li>Handled CRUD operations, validations, and dynamic content rendering.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Entertainment Kingdom Website</h3>
+                        <ul>
+                            <li>Set up a new Laravel project from scratch.</li>
+                            <li>Converted static HTML pages into dynamic Laravel Blade views.</li>
+                            <li>Connected controllers, routes, and models for dynamic data flow.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Design Invites Project</h3>
+                        <ul>
+                            <li>Developed RESTful APIs for product listing and filtering.</li>
+                            <li>Ensured proper response formatting, status codes, and authentication.</li>
+                            <li>Used Laravel Resources and Request Validation effectively.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Journey</h2>
+                <p class="section-subtitle">PHP & Laravel Development Experience</p>
+            </div>
+
+            <div class="timeline">
+
+                <!-- Netzur Networking (Current) -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>PHP Backend Developer</h3>
+                        <p class="code-font" style="color: var(--terminal-green); margin: 0.5rem 0;">
+                            Netzur Networking Private Limited, Sidhpur (Tavadiya Cross Road)
+                        </p>
+                        <p style="color: var(--light); opacity: 0.8; margin-bottom: 1rem;">
+                            Jul 2025 – Present
+                        </p>
+                        <ul>
+                            <li>Currently working in a product-based ISP company focused on Internet Billing Systems.
+                            </li>
+                            <li>Developing and maintaining backend modules using PHP and Laravel.</li>
+                            <li>Working on subscriber management, billing, invoicing, and payment-related features.</li>
+                            <li>Building and maintaining RESTful APIs for ISP operations.</li>
+                            <li>Handling MySQL database design, queries, and performance optimization.</li>
+                            <li>Collaborating with team members to improve system reliability and scalability.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Latitude Technolabs -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>PHP Laravel Developer Intern</h3>
+                        <p class="code-font" style="color: var(--terminal-green); margin: 0.5rem 0;">
+                            Latitude Technolabs Private Limited, Ahmedabad
+                        </p>
+                        <p style="color: var(--light); opacity: 0.8; margin-bottom: 1rem;">
+                            Jan 2025 – Jun 2025
+                        </p>
+                        <ul>
+                            <li>Gained hands-on experience in the Laravel framework from basic to mid-level.</li>
+                            <li>Worked on real-world backend features and REST APIs.</li>
+                            <li>Improved frontend skills using JavaScript, AJAX, HTML, and CSS.</li>
+                            <li>Learned basics of Craft CMS and contributed to client project management.</li>
+                            <li>Collaborated with teams and improved professional communication skills.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mantiq Infotech -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>PHP Developer Trainee</h3>
+                        <p class="code-font" style="color: var(--terminal-green); margin: 0.5rem 0;">
+                            Mantiq Infotech, Himmatnagar
+                        </p>
+                        <p style="color: var(--light); opacity: 0.8; margin-bottom: 1rem;">
+                            July 2024 – Dec 2024
+                        </p>
+                        <ul>
+                            <li>Learned PHP fundamentals, MVC architecture, PSR coding standards, and clean code
+                                practices.</li>
+                            <li>Worked with MySQL queries and database optimization.</li>
+                            <li>Used Git & GitHub for version control.</li>
+                            <li>Implemented validation, emails, views, helpers, and query builder.</li>
+                            <li>Worked with JavaScript, jQuery, Bootstrap, CSS, and Font Icons.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Build Together</h2>
+                <p class="section-subtitle">Ready for your next backend project?</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <h3>Email</h3>
+                        <p class="code-font">maknojiyakamarali504@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <h3>Phone</h3>
+                        <p class="code-font">+91 95586 96170</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <h3>Location</h3>
+                        <p class="code-font">Palanpur, Gujarat • Remote Available</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <h3>Availability</h3>
+                        <p class="code-font">Full-time • Contract • Freelance</p>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form form-card" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="name" placeholder=" " required>
+                            <label for="name" class="form-label">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" id="email" placeholder=" " required>
+                            <label for="email" class="form-label">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="company" placeholder=" ">
+                            <label for="company" class="form-label">Company (Optional)</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" id="message" placeholder=" " rows="6" required></textarea>
+                            <label for="message" class="form-label">Project Requirements</label>
+                        </div>
+                        <button type="submit" class="send-btn">
+                            Send Proposal Request <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+
+                    <div class="contact-card highlight-card mb-5">
+                        <h3>Why Work With Me?</h3>
+                        <ul class="code-font">
+                            <li>✔ ISP product-based experience</li>
+                            <li>✔ Laravel & MySQL backend</li>
+                            <li>✔ REST API development</li>
+                            <li>✔ Reliable & maintainable code</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <div class="logo-icon">KM</div>
+                    <div class="logo-text">
+                        <div class="logo-name">Kamarali Maknojiya</div>
+                        <div class="logo-title">Backend Specialist</div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/kamarali786" class="social-link" target="_blank"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/kamarali-maknojiya-065905277/" class="social-link"
+                        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/MaknojiyaA52148" class="social-link" target="_blank"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/maknojiya_ali_786/" class="social-link" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <p class="copyright">
+                &copy; <span id="currentYear"></span> Kamarali Maknojiya. All rights reserved.<br>
+                Built with expertise in PHP, Laravel, codeigniter,and modern backend technologies.
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1672 @@
+        :root {
+            --php: #777BB4;
+            --laravel: #FF2D20;
+            --codeigniter: #EF4223;
+            --javascript: #F7DF1E;
+            --node: #339933;
+            --mysql: #4479A1;
+            --dark: #0A0A0F;
+            --darker: #050508;
+            --light: #F0F2F5;
+            --accent: #6366F1;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --terminal-green: #4ADE80;
+            --terminal-blue: #60A5FA;
+            --terminal-purple: #C084FC;
+            --card-bg: rgba(24, 24, 32, 0.85);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .light {
+            --dark: #F0F2F5;
+            --darker: #E4E7EB;
+            --light: #0A0A0F;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --terminal-green: #059669;
+            --terminal-blue: #2563EB;
+            --terminal-purple: #7C3AED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 45, 32, 0.05) 0%, transparent 20%);
+        }
+
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Terminal Header */
+        .terminal-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--darker);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+            padding: 1rem 2rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #FF5F57;
+        }
+
+        .dot-yellow {
+            background: #FFBD2E;
+        }
+
+        .dot-green {
+            background: #28CA42;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        /* Logo with Name */
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--laravel), var(--php));
+            border-radius: 8px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(255, 45, 32, 0.3);
+            animation: logoGlow 2s infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                box-shadow: 0 4px 12px rgba(255, 45, 32, 0.3);
+            }
+
+            100% {
+                box-shadow: 0 4px 20px rgba(255, 45, 32, 0.5);
+            }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-name {
+            background: linear-gradient(90deg, var(--laravel), var(--php));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .logo-title {
+            font-size: 0.8rem;
+            color: var(--terminal-green);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::before {
+            content: '>';
+            margin-right: 5px;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--terminal-green);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--laravel), var(--php));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--light);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            border-color: var(--laravel);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--light);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .typing-text {
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(90deg, var(--laravel), var(--php), var(--terminal-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            border-right: 3px solid var(--terminal-green);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: var(--terminal-green);
+            }
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--terminal-blue);
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--light);
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: var(--transition);
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        .badge-php {
+            border-left: 3px solid var(--php);
+        }
+
+        .badge-laravel {
+            border-left: 3px solid var(--laravel);
+        }
+
+        .badge-ci {
+            border-left: 3px solid var(--codeigniter);
+        }
+
+        .badge-api {
+            border-left: 3px solid var(--terminal-purple);
+        }
+
+        /* Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--laravel), var(--php));
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 45, 32, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 45, 32, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--laravel);
+        }
+
+        .btn-secondary:hover {
+            background: var(--laravel);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Profile Container */
+        .profile-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            position: relative;
+            width: 340px;
+            height: 420px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: 1px solid var(--card-border);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .profile-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(135deg, var(--laravel), var(--php));
+            opacity: 0.8;
+        }
+
+        .profile-image {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--card-bg);
+            overflow: hidden;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: #000;
+        }
+
+        /* THIS IS THE KEY */
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* fills circle */
+            object-position: center 30%;
+            /* 👈 moves focus UP (face) */
+            display: block;
+        }
+
+        .profile-image::after {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--light);
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            background: var(--card-bg);
+        }
+
+        .profile-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(90deg, var(--laravel), var(--php));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .profile-info p {
+            color: var(--terminal-green);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1rem;
+            font-weight: 1000;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--light);
+            opacity: 0.7;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        .element-php {
+            top: 10%;
+            left: 10%;
+            color: var(--php);
+            font-size: 4rem;
+            animation-delay: 0s;
+        }
+
+        .element-laravel {
+            top: 60%;
+            right: 10%;
+            color: var(--laravel);
+            font-size: 3rem;
+            animation-delay: 5s;
+        }
+
+        .element-db {
+            bottom: 20%;
+            left: 20%;
+            color: var(--terminal-blue);
+            font-size: 2.5rem;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(20px, -20px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(0, -40px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-20px, -20px) rotate(270deg);
+            }
+        }
+
+        /* Skills Section */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '</>';
+            position: absolute;
+            right: -40px;
+            top: -10px;
+            color: var(--laravel);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .section-subtitle {
+            color: var(--terminal-blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px var(--accent-glow);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--laravel), var(--php));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            background: var(--laravel);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px var(--accent-glow);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-icon {
+            color: var(--laravel);
+            font-size: 2rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--terminal-green);
+            text-decoration: none;
+            margin-top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--laravel);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--laravel);
+            border-radius: 50%;
+            top: 30px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--laravel);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--laravel);
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--laravel);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .form-label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: var(--light);
+            opacity: 0.7;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .form-input:focus+.form-label,
+        .form-input:not(:placeholder-shown)+.form-label {
+            top: -0.5rem;
+            left: 0.8rem;
+            font-size: 0.85rem;
+            background: var(--dark);
+            padding: 0 0.5rem;
+            color: var(--laravel);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, var(--terminal-green), var(--terminal-blue));
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            align-self: flex-start;
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
+            margin-top: 50px;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(74, 222, 128, 0.4);
+        }
+
+        .send-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .send-btn:hover i {
+            transform: translateX(5px) rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--laravel);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--light);
+            opacity: 0.7;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: 21px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 120px;
+                left: 0;
+                width: 100%;
+                background: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                border-bottom: 1px solid var(--card-border);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .profile-card {
+                width: 300px;
+                height: 380px;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                width: 280px;
+                height: 360px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--laravel);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--php);
+        }
+
+        /* ========= PROTECTION OVERLAY ========= */
+        .protection-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .protection-content {
+            background: var(--card-bg);
+            border: 2px solid var(--laravel);
+            border-radius: 15px;
+            padding: 3rem;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(255, 45, 32, 0.3);
+        }
+
+        /* ========= ANTI-COPY STYLES ========= */
+        .no-copy {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .no-drag {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+
+        .contact-card.highlight-card {
+            margin-top: 80px;
+            border: 2px solid var(--laravel);
+            background: linear-gradient(135deg,
+                    rgba(255, 45, 32, 0.08),
+                    var(--card-bg));
+        }
+
+        .form-card.form-input {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e5e7eb;
+            color: #111;
+        }
+
+        .form-card.form-label {
+            color: #6b7280;
+        }
+
+        .form-card.send-btn {
+            margin-top: 1rem;
+        }
+
+        /* Skills Section Animation Styles */
+        .section-line {
+            height: 4px;
+            width: 100px;
+            background: var(--card-border);
+            margin: 1rem auto;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .line-animation {
+            position: absolute;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--laravel), transparent);
+            animation: slideLine 3s infinite ease-in-out;
+        }
+
+        @keyframes slideLine {
+            0% {
+                left: -40px;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Progress Bars */
+        .skill-progress-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-section {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .progress-title {
+            color: var(--terminal-green);
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+        }
+
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-header span:first-child {
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .progress-percent {
+            color: var(--laravel);
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--darker);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--laravel), var(--php));
+            border-radius: 5px;
+            width: 0;
+            position: relative;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Skill Cards */
+        .skill-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .skill-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--laravel), var(--php));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 1rem;
+            z-index: 2;
+        }
+
+        .card-glow {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--laravel);
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.3;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+
+        .card-body h3 {
+            color: var(--light);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .card-body p {
+            color: var(--light);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--laravel);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .skill-stats {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--terminal-green);
+            font-size: 0.9rem;
+        }
+
+        .stat i {
+            font-size: 1rem;
+        }
+
+        /* Skill Wheel */
+        .skill-wheel-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            margin-top: 2rem;
+        }
+
+        .wheel {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--laravel), var(--php));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(255, 45, 32, 0.3);
+        }
+
+        .center-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--laravel);
+            filter: blur(15px);
+            opacity: 0.4;
+            animation: centerPulse 2s infinite alternate;
+        }
+
+        @keyframes centerPulse {
+            0% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+
+        .wheel-item {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: var(--darker);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            z-index: 5; 
+        }
+
+        .wheel-item i {
+            font-size: 1.5rem;
+            color: var(--terminal-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .wheel-item span {
+            font-size: 0.7rem;
+            color: var(--light);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* .wheel-item:hover {
+            background: var(--terminal-green);
+            box-shadow: var(--terminal-green);
+            border-color: var(--laravel);
+            transform: scale(1.1);
+        } */
+
+        .wheel-item:hover i,
+        .wheel-item:hover span {
+            color: white;
+        }
+
+        /* Position wheel items in circle */
+        .wheel-item[data-index="0"] {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wheel-item[data-index="1"] {
+            top: 25%;
+            right: 10%;
+        }
+
+        .wheel-item[data-index="2"] {
+            bottom: 25%;
+            right: 10%;
+        }
+
+        .wheel-item[data-index="3"] {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wheel-item[data-index="4"] {
+            bottom: 25%;
+            left: 10%;
+        }
+
+        .wheel-item[data-index="5"] {
+            top: 25%;
+            left: 10%;
+        }
+
+        .wheel-info h3 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .wheel-info p {
+            color: var(--light);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .wheel-item:hover {
+            color: #fff;
+            transform: scale(1.15);
+        }
+
+        /* JS */
+        .wheel-item.js:hover {
+            background: radial-gradient(circle, #f7df1e, #d4b700);
+            box-shadow: 0 0 20px rgba(247, 223, 30, 0.7);
+        }
+
+        /* PHP */
+        .wheel-item.php:hover {
+            background: radial-gradient(circle, #777bb4, #5a5f9d);
+            box-shadow: 0 0 20px rgba(119, 123, 180, 0.7);
+        }
+
+        /* Laravel */
+        .wheel-item.laravel:hover {
+            background: radial-gradient(circle, #ff2d20, #c62828);
+            box-shadow: 0 0 20px rgba(255, 45, 32, 0.7);
+        }
+
+        /* MySQL */
+        .wheel-item.mysql:hover {
+            background: radial-gradient(circle, #4479a1, #2c5877);
+            box-shadow: 0 0 20px rgba(68, 121, 161, 0.7);
+        }
+
+        /* Git */
+        .wheel-item.git:hover {
+            background: radial-gradient(circle, #f05032, #c0392b);
+            box-shadow: 0 0 20px rgba(240, 80, 50, 0.7);
+        }
+
+        /* API */
+        .wheel-item.api:hover {
+            background: #7410f0;
+            box-shadow: #7410f0;
+        }
+
+
+        .skill-detail {
+            background: var(--darker);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .detail-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .detail-content i {
+            font-size: 2rem;
+            color: var(--laravel);
+        }
+
+        .detail-content h4 {
+            color: var(--light);
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-content p {
+            color: var(--light);
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--laravel);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .skill-wheel-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .wheel {
+                width: 250px;
+                height: 250px;
+            }
+
+            .wheel-item {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skill-progress-container {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+
+            .skill-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-wheel-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skill-card {
+                padding: 1.5rem;
+            }
+
+            .wheel {
+                width: 200px;
+                height: 200px;
+            }
+
+            .wheel-item {
+                width: 50px;
+                height: 50px;
+            }
+
+            .wheel-item i {
+                font-size: 1.2rem;
+            }
+
+            .wheel-item span {
+                font-size: 0.6rem;
+            }
+        }
