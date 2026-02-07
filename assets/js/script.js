@@ -5,7 +5,7 @@
     const overlay = document.getElementById('protectionOverlay');
 
     ['log', 'warn', 'error', 'info', 'debug'].forEach(fn => {
-        console[fn] = function () {};
+        console[fn] = function () { };
     });
 
     document.addEventListener('keydown', function (e) {
@@ -31,20 +31,20 @@
 
     let devToolsOpen = false;
 
-    function checkDevTools() {
-        const threshold = 160;
-        if (
-            window.outerWidth - window.innerWidth > threshold ||
-            window.outerHeight - window.innerHeight > threshold
-        ) {
-            if (!devToolsOpen) {
-                devToolsOpen = true;
-                showProtectionOverlay();
-            }
-        }
-    }
+    // function checkDevTools() {
+    //     const threshold = 160;
+    //     if (
+    //         window.outerWidth - window.innerWidth > threshold ||
+    //         window.outerHeight - window.innerHeight > threshold
+    //     ) {
+    //         if (!devToolsOpen) {
+    //             devToolsOpen = true;
+    //             showProtectionOverlay();
+    //         }
+    //     }
+    // }
 
-    setInterval(checkDevTools, 1000);
+    // setInterval(checkDevTools, 1000);
 
     function showProtectionOverlay() {
         if (!overlay) return;
@@ -199,13 +199,42 @@
                     message: document.getElementById("message").value
                 }
             );
-            alert("✅ Message sent successfully!");
+            showAlert(
+                "success",
+                "Message Sent!",
+                "Thank you for reaching out. I’ll get back to you within 24 hours."
+            );
+
             form.reset();
         } catch (err) {
-            alert("❌ Failed to send message.");
+            console.error(err);
+            showAlert(
+                "error",
+                "Message Failed",
+                "Something went wrong while sending your message. Please try again later."
+            );
+
         } finally {
             btn.innerHTML = original;
             btn.disabled = false;
         }
     });
 })();
+
+function showAlert(type, title, message) {
+    const wrapper = document.getElementById("customAlert");
+    const box = wrapper.querySelector(".alert-box");
+
+    box.classList.remove("success", "error");
+    box.classList.add(type);
+
+    document.getElementById("alertTitle").innerText = title;
+    document.getElementById("alertMessage").innerText = message;
+
+    wrapper.style.display = "flex";
+}
+
+function closeAlert() {
+    document.getElementById("customAlert").style.display = "none";
+}
+
