@@ -250,21 +250,21 @@ contactForm.addEventListener('submit', (e) => {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    setTimeout(() => {
-        alert(`Thank you, ${formData.name}! Your proposal request has been sent. I'll review it and get back to you within 24 hours.`);
+    // setTimeout(() => {
+    //     alert(`Thank you, ${formData.name}! Your proposal request has been sent. I'll review it and get back to you within 24 hours.`);
 
-        contactForm.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+    //     contactForm.reset();
+    //     submitBtn.innerHTML = originalText;
+    //     submitBtn.disabled = false;
 
-        // Reset labels
-        document.querySelectorAll('.form-label').forEach(label => {
-            label.style.top = '1rem';
-            label.style.fontSize = '1rem';
-            label.style.background = 'transparent';
-            label.style.color = '';
-        });
-    }, 1500);
+    //     // Reset labels
+    //     document.querySelectorAll('.form-label').forEach(label => {
+    //         label.style.top = '1rem';
+    //         label.style.fontSize = '1rem';
+    //         label.style.background = 'transparent';
+    //         label.style.color = '';
+    //     });
+    // }, 1500);
 });
 
 // Smooth Scroll
@@ -513,3 +513,45 @@ function toBase64(file) {
         reader.onerror = reject;
     });
 }
+
+(function () {
+    emailjs.init("ld7KH-e2_PdMCcmrE"); 
+})();
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector("button[type='submit']");
+    const originalText = submitBtn.innerHTML;
+
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    const templateParams = {
+        from_name: document.getElementById("name").value,
+        reply_to: document.getElementById("email").value,
+        subject: document.getElementById("company").value || "Portfolio Contact",
+        message: document.getElementById("message").value
+    };
+
+    emailjs
+        .send(
+            "service_4drocoa",     // ✅ same service
+            "template_tncnn79",    // ✅ same template
+            templateParams
+        )
+        .then(() => {
+            alert("✅ Message sent successfully!");
+            contactForm.reset();
+        })
+        .catch((error) => {
+            console.error("EmailJS Error:", error);
+            alert("❌ Failed to send message. Try again later.");
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
+});
