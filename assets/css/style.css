@@ -1451,7 +1451,7 @@
             border: 5px solid var(--card-border);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            z-index: 5; 
+            z-index: 5;
         }
 
         .wheel-item i {
@@ -1668,5 +1668,89 @@
 
             .wheel-item span {
                 font-size: 0.6rem;
+            }
+        }
+
+        /* ===== Custom Alert ===== */
+        .custom-alert {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            backdrop-filter: blur(6px);
+        }
+
+        .alert-box {
+            background: linear-gradient(135deg, #0f172a, #020617);
+            border-radius: 14px;
+            padding: 1.5rem 2rem;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            animation: popIn 0.35s ease;
+            position: relative;
+            color: #e5e7eb;
+        }
+
+        .alert-box.success {
+            border-left: 6px solid #22c55e;
+        }
+
+        .alert-box.error {
+            border-left: 6px solid #ef4444;
+        }
+
+        .alert-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .alert-box.success .alert-icon::before {
+            content: "✔️";
+        }
+
+        .alert-box.error .alert-icon::before {
+            content: "❌";
+        }
+
+        .alert-content h4 {
+            margin: 0 0 0.4rem;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .alert-content p {
+            font-size: 0.95rem;
+            color: #cbd5f5;
+            line-height: 1.5;
+        }
+
+        .alert-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        .alert-close:hover {
+            color: #fff;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
             }
         }
