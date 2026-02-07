@@ -4,17 +4,15 @@
 
     const overlay = document.getElementById('protectionOverlay');
 
-    // Disable console
     ['log', 'warn', 'error', 'info', 'debug'].forEach(fn => {
         console[fn] = function () {};
     });
 
-    // Block keys
     document.addEventListener('keydown', function (e) {
         if (
-            e.keyCode === 123 || // F12
-            (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || // Ctrl+Shift+I/J/C
-            (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+            e.keyCode === 123 ||
+            (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) ||
+            (e.ctrlKey && e.keyCode === 85)
         ) {
             e.preventDefault();
             showProtectionOverlay();
@@ -22,7 +20,6 @@
         }
     });
 
-    // Disable right-click
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
         showToast("🔒 Right-click is disabled on this portfolio");
@@ -75,14 +72,15 @@
 })();
 
 // ========== THEME TOGGLE ==========
-const themeToggle = document.getElementById('themeToggle');
-if (themeToggle) {
+(function () {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
     const themeIcon = themeToggle.querySelector('i');
 
     themeToggle.addEventListener('click', () => {
         document.documentElement.classList.toggle('light');
         const isLight = document.documentElement.classList.contains('light');
-
         themeIcon.className = isLight ? 'fa fa-sun' : 'fa fa-moon';
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
@@ -91,24 +89,28 @@ if (themeToggle) {
         document.documentElement.classList.add('light');
         themeIcon.className = 'fa fa-sun';
     }
-}
+})();
 
 // ========== MOBILE MENU ==========
-const mobileMenu = document.getElementById('mobileMenu');
-const navLinks = document.getElementById('navLinks');
+(function () {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.getElementById('navLinks');
 
-if (mobileMenu && navLinks) {
+    if (!mobileMenu || !navLinks) return;
+
     mobileMenu.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         mobileMenu.innerHTML = navLinks.classList.contains('active')
             ? '<i class="fas fa-times"></i>'
             : '<i class="fas fa-bars"></i>';
     });
-}
+})();
 
 // ========== TYPEWRITER ==========
-const typingText = document.querySelector('.typing-text');
-if (typingText) {
+(function () {
+    const typingText = document.querySelector('.typing-text');
+    if (!typingText) return;
+
     const texts = ['Backend Developer', 'PHP Expert', 'Laravel Specialist', 'API Architect'];
     let i = 0, j = 0, del = false;
 
@@ -124,57 +126,64 @@ if (typingText) {
         setTimeout(type, del ? 60 : 120);
     }
     type();
-}
+})();
 
 // ========== SMOOTH SCROLL ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
+(function () {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-});
+})();
 
 // ========== INTERSECTION ANIMATIONS ==========
-const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-            fadeObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
+(function () {
+    const fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
 
-document.querySelectorAll('.skill-category,.project-card,.contact-card')
-    .forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = '0.6s';
-        fadeObserver.observe(el);
-    });
+    document
+        .querySelectorAll('.skill-category,.project-card,.contact-card')
+        .forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = '0.6s';
+            fadeObserver.observe(el);
+        });
+})();
 
 // ========== FOOTER YEAR ==========
-const yearEl = document.getElementById('currentYear');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+(function () {
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
 
 // ========== EMAILJS ==========
 (function () {
     emailjs.init("ld7KH-e2_PdMCcmrE");
-})();
 
-const contactForm = document.getElementById("contactForm");
+    const form = document.getElementById("contactForm");
+    if (!form) return;
 
-if (contactForm) {
-    contactForm.addEventListener("submit", async function (e) {
+    const btn = form.querySelector("button[type='submit']");
+
+    form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const btn = contactForm.querySelector("button[type='submit']");
         const original = btn.innerHTML;
         btn.innerHTML = "Sending...";
         btn.disabled = true;
@@ -191,7 +200,7 @@ if (contactForm) {
                 }
             );
             alert("✅ Message sent successfully!");
-            contactForm.reset();
+            form.reset();
         } catch (err) {
             alert("❌ Failed to send message.");
         } finally {
@@ -199,4 +208,4 @@ if (contactForm) {
             btn.disabled = false;
         }
     });
-}
+})();
