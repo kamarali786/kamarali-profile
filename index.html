@@ -7,44 +7,50 @@
   <meta name="description" content="Kamarali Maknojiya — PHP & Laravel backend developer building billing, subscriber and payment systems for ISPs. Based in Palanpur, Gujarat.">
   <meta property="og:title" content="Kamarali Maknojiya — PHP & Laravel Backend Developer">
   <meta property="og:description" content="I build the backend that keeps internet providers billing: subscribers, invoices, payments and REST APIs.">
-  <meta property="og:image" content="assets/img/kamarali.jpg">
-  <meta name="theme-color" content="#F6F7FB">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2314182B'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial' font-weight='700' font-size='28' fill='%23F7F8FB' text-anchor='middle' dominant-baseline='middle'%3EKM%3C/text%3E%3Ccircle cx='50' cy='14' r='5' fill='%23E8452C'/%3E%3C/svg%3E">
+  <meta property="og:image" content="assets/img/kamarali.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0F1E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232DD4BF'/%3E%3Cstop offset='1' stop-color='%236366F1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-weight='700' font-size='26' fill='%230A0F1E' text-anchor='middle' dominant-baseline='middle'%3EKM%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>
-    // Apply saved theme before paint to avoid a flash
+    // Apply saved theme before paint (dark is the default look)
     try { var t = localStorage.getItem('km-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    document.documentElement.classList.add('js');
   </script>
 </head>
 
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"><span></span><span></span></div>
 
+  <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
     <div class="wrap nav__inner">
       <a href="#top" class="brand" aria-label="Kamarali Maknojiya, back to top">
         <span class="brand__mark">KM</span>
-        <span class="brand__name">Kamarali Maknojiya</span>
+        <span class="brand__name">Kamarali<span class="brand__dot">.</span></span>
       </a>
 
       <nav class="nav__links" id="navLinks" aria-label="Main">
+        <a href="#about">About</a>
         <a href="#work">Experience</a>
-        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="nav__actions">
         <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch colour theme">
-          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
         </button>
-        <a class="btn btn--small btn--ink nav__cv" href="assets/cv/Kamarali-Maknojiya-Resume.pdf" download>
-          <i class="fa-solid fa-arrow-down" aria-hidden="true"></i> Resume
+        <a class="btn btn--small btn--accent nav__cta" href="#contact">
+          <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Hire me
         </a>
         <button class="icon-btn nav__burger" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
           <i class="fa-solid fa-bars" aria-hidden="true"></i>
@@ -58,67 +64,138 @@
     <section class="hero" id="top">
       <div class="wrap hero__grid">
         <div class="hero__text">
-          <p class="hello"><span class="wave" aria-hidden="true">👋</span> Hi, I'm Kamarali</p>
-          <h1 class="hero__title">
-            I build the backend that keeps internet providers&nbsp;billing.
+          <p class="badge reveal">
+            <span class="pulse" aria-hidden="true"></span>
+            Available for new projects
+          </p>
+          <h1 class="hero__title reveal">
+            Hi, I'm Kamarali.<br>
+            I build <span class="grad">backends</span><br class="br-lg"> that keep ISPs billing.
           </h1>
-          <p class="hero__lead">
-            PHP &amp; Laravel developer at Netzur, working on subscriber management, invoicing,
-            payment gateways and the REST APIs that tie an ISP's operations together.
+          <p class="hero__role reveal" aria-live="off">
+            <span class="mono">&gt;</span> <span id="typed" class="typed">PHP &amp; Laravel Developer</span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero__lead reveal">
+            Backend developer at Netzur, working on subscriber management, invoicing,
+            payment gateways and the REST APIs that tie an internet provider's operations together.
           </p>
 
-          <div class="hero__cta">
+          <div class="hero__cta reveal">
             <a class="btn btn--accent" href="#contact">
               <i class="fa-solid fa-envelope" aria-hidden="true"></i> Email me
             </a>
-            <a class="btn btn--ghost" href="assets/cv/Kamarali-Maknojiya-Resume.pdf" download>
-              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download resume
-              <span class="btn__meta">PDF</span>
+            <a class="btn btn--ghost" href="resume.html">
+              <i class="fa-solid fa-file-lines" aria-hidden="true"></i> View resume
             </a>
           </div>
 
-          <ul class="facts">
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Palanpur, Gujarat — open to remote</li>
-            <li><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Full-time, contract or freelance</li>
+          <ul class="facts reveal">
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Palanpur, Gujarat · open to remote</li>
+            <li><i class="fa-regular fa-clock" aria-hidden="true"></i> <span id="localTime">—</span></li>
           </ul>
         </div>
 
-        <figure class="portrait">
-          <div class="portrait__frame">
-            <picture>
-              <source srcset="assets/img/kamarali.webp" type="image/webp">
-              <img src="assets/img/kamarali.jpg" width="720" height="987" alt="Portrait of Kamarali Maknojiya" fetchpriority="high">
-            </picture>
+        <figure class="portrait reveal">
+          <div class="portrait__ring">
+            <div class="portrait__frame">
+              <picture>
+                <source srcset="assets/img/kamarali.webp" type="image/webp">
+                <img src="assets/img/kamarali.jpeg" width="800" height="800" alt="Portrait of Kamarali Maknojiya" fetchpriority="high">
+              </picture>
+            </div>
           </div>
-          <figcaption class="status">
-            <span class="status__dot" aria-hidden="true"></span>
-            <span><strong>Available</strong> for new projects</span>
-          </figcaption>
-          <div class="stack-chip" aria-hidden="true">
-            <i class="fa-brands fa-laravel"></i><i class="fa-brands fa-php"></i><i class="fa-solid fa-database"></i>
+          <div class="chip chip--tl" aria-hidden="true">
+            <i class="fa-brands fa-laravel"></i> Laravel
+          </div>
+          <div class="chip chip--br" aria-hidden="true">
+            <span class="chip__num">2+</span><span>years<br>building</span>
+          </div>
+          <div class="chip chip--bl" aria-hidden="true">
+            <i class="fa-brands fa-php"></i><i class="fa-solid fa-database"></i><i class="fa-brands fa-js"></i>
           </div>
         </figure>
+      </div>
+
+      <!-- tech marquee -->
+      <div class="marquee" aria-label="Technologies I use">
+        <div class="marquee__track">
+          <span>PHP</span><span>Laravel</span><span>MySQL</span><span>REST APIs</span><span>CodeIgniter</span><span>JavaScript</span><span>jQuery</span><span>AJAX</span><span>Blade</span><span>Bootstrap</span><span>Git</span><span>Postman</span><span>Composer</span>
+          <span aria-hidden="true">PHP</span><span aria-hidden="true">Laravel</span><span aria-hidden="true">MySQL</span><span aria-hidden="true">REST APIs</span><span aria-hidden="true">CodeIgniter</span><span aria-hidden="true">JavaScript</span><span aria-hidden="true">jQuery</span><span aria-hidden="true">AJAX</span><span aria-hidden="true">Blade</span><span aria-hidden="true">Bootstrap</span><span aria-hidden="true">Git</span><span aria-hidden="true">Postman</span><span aria-hidden="true">Composer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT / STATS ============ -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="eyebrow">01 · About</p>
+          <h2>Backend first, with enough frontend to ship a whole feature.</h2>
+        </div>
+
+        <div class="bento">
+          <article class="card card--about reveal">
+            <p>
+              I'm a PHP &amp; Laravel developer from Palanpur, Gujarat. I went from trainee to building
+              production billing systems in about two years. Today I work on an all-in-one ISP management
+              platform: the modules that keep track of subscribers, raise invoices, collect payments and
+              expose everything through clean REST APIs.
+            </p>
+            <p>
+              I like code that is easy to read, queries that stay fast as data grows, and features that are
+              finished end to end, from the database schema to the Blade view.
+            </p>
+          </article>
+
+          <div class="stat reveal"><span class="stat__num" data-count="2" data-suffix="+">2+</span><span class="stat__label">Years of hands-on work</span></div>
+          <div class="stat reveal"><span class="stat__num" data-count="3">3</span><span class="stat__label">Companies worked with</span></div>
+          <div class="stat reveal"><span class="stat__num" data-count="6" data-suffix="+">6+</span><span class="stat__label">Projects shipped</span></div>
+          <div class="stat reveal"><span class="stat__num" data-count="8.3" data-decimals="1">8.3</span><span class="stat__label">BCA grade · first distinction</span></div>
+        </div>
+
+        <div class="services">
+          <article class="service reveal">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            <h3>Laravel applications</h3>
+            <p>Modular apps with clean architecture, validation, queues and role-based admin panels.</p>
+          </article>
+          <article class="service reveal">
+            <i class="fa-solid fa-plug" aria-hidden="true"></i>
+            <h3>REST APIs</h3>
+            <p>Well-structured APIs with API Resources, authentication and documentation in Postman.</p>
+          </article>
+          <article class="service reveal">
+            <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+            <h3>Billing &amp; payments</h3>
+            <p>Subscriptions, invoices and payment-gateway integrations that reconcile correctly.</p>
+          </article>
+          <article class="service reveal">
+            <i class="fa-solid fa-database" aria-hidden="true"></i>
+            <h3>MySQL performance</h3>
+            <p>Schema design, indexing and query tuning for data that keeps growing.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
     <section class="section" id="work">
       <div class="wrap">
-        <div class="section__head">
-          <h2>Experience</h2>
-          <p>From trainee to building production billing systems in about two years.</p>
+        <div class="section__head reveal">
+          <p class="eyebrow">02 · Experience</p>
+          <h2>Where I've worked</h2>
         </div>
 
         <ol class="timeline">
-          <li class="job job--current">
+          <li class="job job--current reveal">
             <div class="job__when">
               <span>Jul 2025 — Present</span>
-              <span class="pill">Current</span>
+              <span class="pill"><span class="pulse pulse--sm" aria-hidden="true"></span> Current</span>
             </div>
             <div class="job__body">
               <h3>PHP Backend Developer</h3>
               <p class="job__org">Netzur Networking Pvt. Ltd. · Sidhpur</p>
-              <p>Product company building an all-in-one ISP management and billing platform.</p>
+              <p class="job__desc">Product company building an all-in-one ISP management and billing platform.</p>
               <ul>
                 <li>Build and maintain Laravel modules for subscriber management, billing and invoicing.</li>
                 <li>Integrate payment gateways and third-party services into the billing flow.</li>
@@ -128,7 +205,7 @@
             </div>
           </li>
 
-          <li class="job">
+          <li class="job reveal">
             <div class="job__when"><span>Jan 2025 — Jun 2025</span></div>
             <div class="job__body">
               <h3>PHP Laravel Developer Intern</h3>
@@ -141,7 +218,7 @@
             </div>
           </li>
 
-          <li class="job">
+          <li class="job reveal">
             <div class="job__when"><span>Jul 2024 — Dec 2024</span></div>
             <div class="job__body">
               <h3>PHP Developer Trainee</h3>
@@ -154,12 +231,12 @@
             </div>
           </li>
 
-          <li class="job job--edu">
-            <div class="job__when"><span>2021 — 2024</span></div>
+          <li class="job job--edu reveal">
+            <div class="job__when"><span>2021 — 2024</span><span class="pill pill--soft"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education</span></div>
             <div class="job__body">
               <h3>Bachelor of Computer Applications</h3>
               <p class="job__org">B K Mehta IT Center BCA College · Palanpur</p>
-              <p>Graduated with 8.3 / 10, first distinction.</p>
+              <p class="job__desc">Graduated with 8.3 / 10, first distinction.</p>
             </div>
           </li>
         </ol>
@@ -167,37 +244,37 @@
     </section>
 
     <!-- ============ SKILLS ============ -->
-    <section class="section section--tint" id="skills">
+    <section class="section" id="skills">
       <div class="wrap">
-        <div class="section__head">
+        <div class="section__head reveal">
+          <p class="eyebrow">03 · Skills</p>
           <h2>What I work with</h2>
-          <p>Backend first, with enough frontend to ship a whole feature.</p>
         </div>
 
         <div class="skills">
-          <div class="skill-group skill-group--lead">
+          <div class="skill-group skill-group--lead reveal">
             <h3><i class="fa-brands fa-laravel" aria-hidden="true"></i> Backend</h3>
             <ul class="tags">
               <li>PHP</li><li>Laravel</li><li>CodeIgniter</li><li>REST APIs</li>
-              <li>Laravel Modules</li><li>Payment gateways</li>
+              <li>Laravel Modules</li><li>Payment gateways</li><li>MVC</li><li>PSR standards</li>
             </ul>
           </div>
-          <div class="skill-group">
+          <div class="skill-group reveal">
             <h3><i class="fa-solid fa-database" aria-hidden="true"></i> Database</h3>
             <ul class="tags">
               <li>MySQL</li><li>Query optimisation</li><li>Schema design</li><li>Eloquent</li>
             </ul>
           </div>
-          <div class="skill-group">
+          <div class="skill-group reveal">
             <h3><i class="fa-solid fa-code" aria-hidden="true"></i> Frontend</h3>
             <ul class="tags">
               <li>HTML</li><li>CSS</li><li>JavaScript</li><li>jQuery</li><li>AJAX</li><li>Bootstrap</li><li>Blade</li>
             </ul>
           </div>
-          <div class="skill-group">
+          <div class="skill-group reveal">
             <h3><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Tools</h3>
             <ul class="tags">
-              <li>Git &amp; GitHub</li><li>Postman</li><li>Composer</li>
+              <li>Git &amp; GitHub</li><li>Postman</li><li>Composer</li><li>Craft CMS</li>
             </ul>
           </div>
         </div>
@@ -207,49 +284,114 @@
     <!-- ============ PROJECTS ============ -->
     <section class="section" id="projects">
       <div class="wrap">
-        <div class="section__head">
-          <h2>Selected projects</h2>
-          <p>Client work and personal builds.</p>
+        <div class="section__head section__head--row reveal">
+          <div>
+            <p class="eyebrow">04 · Projects</p>
+            <h2>Selected work</h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filter projects">
+            <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" type="button" data-filter="laravel" aria-pressed="false">Laravel</button>
+            <button class="filter" type="button" data-filter="php" aria-pressed="false">PHP / CI</button>
+          </div>
         </div>
 
-        <div class="projects">
-          <article class="project project--feature">
-            <div class="project__icon"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></div>
+        <div class="projects" id="projectGrid">
+          <article class="project project--feature reveal" data-tags="laravel">
+            <div class="project__top">
+              <div class="project__icon"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></div>
+              <span class="project__tag">Production · Netzur</span>
+            </div>
             <h3>ISP billing platform</h3>
             <p>Subscriber, invoice and payment modules for Netzur's ISP management product, plus the APIs its apps and partners use.</p>
-            <ul class="project__stack"><li>Laravel</li><li>MySQL</li><li>REST</li></ul>
+            <ul class="project__stack"><li>Laravel</li><li>MySQL</li><li>REST</li><li>Payment gateways</li></ul>
           </article>
 
-          <article class="project">
-            <div class="project__icon"><i class="fa-solid fa-gauge" aria-hidden="true"></i></div>
+          <article class="project reveal" data-tags="laravel">
+            <div class="project__top">
+              <div class="project__icon"><i class="fa-solid fa-gauge" aria-hidden="true"></i></div>
+              <span class="project__tag">Client</span>
+            </div>
             <h3>Site Pro admin panel</h3>
             <p>Built several master-admin modules with full CRUD, validation and dynamic Blade views.</p>
             <ul class="project__stack"><li>Laravel</li><li>Blade</li><li>jQuery</li></ul>
           </article>
 
-          <article class="project">
-            <div class="project__icon"><i class="fa-solid fa-masks-theater" aria-hidden="true"></i></div>
+          <article class="project reveal" data-tags="laravel">
+            <div class="project__top">
+              <div class="project__icon"><i class="fa-solid fa-masks-theater" aria-hidden="true"></i></div>
+              <span class="project__tag">Client</span>
+            </div>
             <h3>Entertainment Kingdom</h3>
             <p>Set up the Laravel project from scratch and turned static HTML into dynamic, data-driven pages.</p>
             <ul class="project__stack"><li>Laravel</li><li>MySQL</li></ul>
           </article>
 
-          <article class="project">
-            <div class="project__icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></div>
+          <article class="project reveal" data-tags="laravel">
+            <div class="project__top">
+              <div class="project__icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></div>
+              <span class="project__tag">Client · API</span>
+            </div>
             <h3>Design Invites API</h3>
             <p>REST APIs for product listing and filtering using API Resources, request validation and authentication.</p>
             <ul class="project__stack"><li>Laravel</li><li>REST</li></ul>
           </article>
 
-          <article class="project">
-            <div class="project__icon"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></div>
+          <article class="project reveal" data-tags="php">
+            <div class="project__top">
+              <div class="project__icon"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></div>
+              <span class="project__tag">Personal</span>
+            </div>
             <h3>Online food ordering</h3>
             <p>Registration, menu browsing, cart and order tracking in a CodeIgniter 3 e-commerce app.</p>
-            <ul class="project__stack"><li>CodeIgniter</li><li>MySQL</li></ul>
+            <ul class="project__stack"><li>CodeIgniter 3</li><li>MySQL</li></ul>
             <a class="project__link" href="https://github.com/kamarali786/food-order-project" target="_blank" rel="noopener">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> View code
+              <i class="fa-brands fa-github" aria-hidden="true"></i> View code <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
             </a>
           </article>
+
+          <article class="project reveal" data-tags="php">
+            <div class="project__top">
+              <div class="project__icon"><i class="fa-solid fa-basket-shopping" aria-hidden="true"></i></div>
+              <span class="project__tag">Personal</span>
+            </div>
+            <h3>Online grocery store</h3>
+            <p>Product browsing, user authentication, cart and order management built in core PHP.</p>
+            <ul class="project__stack"><li>Core PHP</li><li>MySQL</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESUME ============ -->
+    <section class="section" id="resume">
+      <div class="wrap">
+        <div class="resume-card reveal">
+          <div class="resume-card__text">
+            <p class="eyebrow">05 · Resume</p>
+            <h2>The one-page version</h2>
+            <p>Everything above on a single, printable page: experience, skills, projects and education.</p>
+            <div class="resume-card__actions">
+              <a class="btn btn--accent" href="resume.html">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i> View online
+              </a>
+              <a class="btn btn--ghost" href="assets/cv/Kamarali-Maknojiya-Resume.pdf" download>
+                <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download PDF
+              </a>
+            </div>
+          </div>
+          <a class="resume-preview" href="resume.html" aria-label="Open resume">
+            <div class="rp">
+              <div class="rp__name"></div>
+              <div class="rp__role"></div>
+              <div class="rp__line rp__line--accent"></div>
+              <div class="rp__cols">
+                <div><i></i><i></i><i class="s"></i><i></i><i></i><i class="s"></i><i></i><i></i><i class="s"></i><i></i><i></i><i></i></div>
+                <div><i></i><i class="s"></i><i></i><i></i><i class="s"></i><i></i><i></i><i class="s"></i><i></i></div>
+              </div>
+            </div>
+            <span class="resume-preview__open"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+          </a>
         </div>
       </div>
     </section>
@@ -257,60 +399,76 @@
     <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">
       <div class="wrap contact__grid">
-        <div class="contact__intro">
-          <h2>Let's work together</h2>
-          <p>Have a Laravel project, an API to build, or a role to fill? Send a message and I'll reply within a day.</p>
+        <div class="contact__intro reveal">
+          <p class="eyebrow">06 · Contact</p>
+          <h2>Let's build something together.</h2>
+          <p class="contact__lead">Have a Laravel project, an API to build, or a role to fill? Send a message. It goes straight to my inbox and I'll reply within a day.</p>
 
           <div class="email-card">
-            <span class="email-card__label">Email</span>
+            <span class="email-card__label"><span class="pulse pulse--sm" aria-hidden="true"></span> Email · usually replies within 24h</span>
             <a class="email-card__addr" href="mailto:maknojiyakamarali504@gmail.com">maknojiyakamarali504@gmail.com</a>
             <div class="email-card__actions">
-              <a class="btn btn--small btn--light" href="mailto:maknojiyakamarali504@gmail.com?subject=Hello%20Kamarali">
-                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Open mail app
+              <a class="btn btn--small btn--accent" id="gmailLink" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=maknojiyakamarali504@gmail.com&amp;su=Hello%20Kamarali" target="_blank" rel="noopener">
+                <i class="fa-brands fa-google" aria-hidden="true"></i> Open in Gmail
               </a>
-              <button class="btn btn--small btn--outline-light" type="button" id="copyEmail" data-email="maknojiyakamarali504@gmail.com">
-                <i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy address</span>
+              <a class="btn btn--small btn--ghost" href="mailto:maknojiyakamarali504@gmail.com?subject=Hello%20Kamarali">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Mail app
+              </a>
+              <button class="btn btn--small btn--ghost" type="button" id="copyEmail" data-email="maknojiyakamarali504@gmail.com">
+                <i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span>
               </button>
             </div>
           </div>
 
           <ul class="contact__list">
-            <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+919558696170">+91 95586 96170</a></li>
-            <li><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><a href="https://wa.me/919558696170" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
-            <li><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i><a href="assets/cv/Kamarali-Maknojiya-Resume.pdf" download>Download resume (PDF)</a></li>
+            <li><a href="tel:+919558696170"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 95586 96170</a></li>
+            <li><a href="https://wa.me/919558696170?text=Hi%20Kamarali%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a></li>
+            <li><a href="https://www.linkedin.com/in/kamarali-maknojiya-065905277/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
           </ul>
         </div>
 
-        <form class="form" id="contactForm" novalidate>
-          <div class="form__row">
-            <div class="field">
-              <label for="name">Your name</label>
-              <input id="name" name="from_name" type="text" autocomplete="name" required>
-              <small class="field__error" data-for="name">Enter your name.</small>
+        <form class="form reveal" id="contactForm" novalidate>
+          <div class="form__head">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="mono">new-message.txt</span>
+          </div>
+          <div class="form__body">
+            <div class="form__row">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="from_name" type="text" autocomplete="name" required placeholder="Jane Doe">
+                <small class="field__error">Enter your name.</small>
+              </div>
+              <div class="field">
+                <label for="email">Your email</label>
+                <input id="email" name="reply_to" type="email" autocomplete="email" required placeholder="you@company.com">
+                <small class="field__error">Enter a valid email so I can reply.</small>
+              </div>
             </div>
+
+            <fieldset class="field">
+              <legend>What's it about?</legend>
+              <div class="topics" id="topics">
+                <label class="topic"><input type="radio" name="topic" value="Job opportunity" checked><span>Job opportunity</span></label>
+                <label class="topic"><input type="radio" name="topic" value="Freelance project"><span>Freelance project</span></label>
+                <label class="topic"><input type="radio" name="topic" value="Just saying hi"><span>Just saying hi</span></label>
+              </div>
+            </fieldset>
+
             <div class="field">
-              <label for="email">Your email</label>
-              <input id="email" name="reply_to" type="email" autocomplete="email" required>
-              <small class="field__error" data-for="email">Enter a valid email so I can reply.</small>
+              <label for="message">Message <span class="counter" id="counter">0 / 1000</span></label>
+              <textarea id="message" name="message" rows="5" maxlength="1000" required placeholder="Tell me about the project, timeline and budget."></textarea>
+              <small class="field__error">Write a short message (at least 10 characters).</small>
             </div>
-          </div>
-          <div class="field">
-            <label for="subject">Subject <span class="opt">optional</span></label>
-            <input id="subject" name="subject" type="text" placeholder="e.g. Laravel API for our app">
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" required placeholder="Tell me about the project, timeline and budget."></textarea>
-            <small class="field__error" data-for="message">Write a short message (at least 10 characters).</small>
-          </div>
 
-          <!-- Honeypot: bots fill this, humans never see it -->
-          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <!-- Honeypot: bots fill this, humans never see it -->
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-          <button class="btn btn--accent btn--block" type="submit" id="sendBtn">
-            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span>Send message</span>
-          </button>
-          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+            <button class="btn btn--accent btn--block" type="submit" id="sendBtn">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span>Send message</span>
+            </button>
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          </div>
         </form>
       </div>
     </section>
@@ -318,7 +476,7 @@
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p>© <span id="year">2026</span> Kamarali Maknojiya</p>
+      <p>© <span id="year">2026</span> Kamarali Maknojiya · Built with care in Gujarat</p>
       <div class="socials">
         <a href="https://github.com/kamarali786" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         <a href="https://www.linkedin.com/in/kamarali-maknojiya-065905277/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -328,6 +486,7 @@
     </div>
   </footer>
 
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
