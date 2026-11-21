@@ -2,13 +2,9 @@
    Kamarali Maknojiya — portfolio scripts (v2)
    ========================================================= */
 
-// ---- EmailJS settings (from your EmailJS dashboard) ----
-// The template should use: {{from_name}}, {{reply_to}}, {{subject}}, {{message}}
-const EMAILJS = {
-  publicKey: "ld7KH-e2_PdMCcmrE",
-  serviceId: "service_4drocoa",
-  templateId: "template_tncnn79",
-};
+// ---- Web3Forms (https://app.web3forms.com) ----
+// Public access key: safe to keep in client-side code. Messages go to maknojiyakamarali504@gmail.com
+const WEB3FORMS_KEY = "e620c206-1e3f-438b-b328-fcd44d01ab4b";
 const MY_EMAIL = "maknojiyakamarali504@gmail.com";
 const ROLES = [
   "PHP & Laravel Developer",
@@ -217,7 +213,7 @@ $$('a[download][href$=".pdf"]').forEach((a) =>
   a.addEventListener("click", () => toast("Downloading resume…"))
 );
 
-/* ---------- contact form (EmailJS, live validation) ---------- */
+/* ---------- contact form (Web3Forms, live validation) ---------- */
 (function () {
   const form = $("#contactForm");
   if (!form) return;
@@ -226,8 +222,6 @@ $$('a[download][href$=".pdf"]').forEach((a) =>
   const counter = $("#counter");
   const msg = $("#message");
   const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-
-  if (window.emailjs) emailjs.init({ publicKey: EMAILJS.publicKey });
 
   const rules = {
     name: (v) => v.trim().length > 1,
@@ -296,13 +290,23 @@ $$('a[download][href$=".pdf"]').forEach((a) =>
     setStatus("", "");
 
     try {
-      if (!window.emailjs) throw new Error("EmailJS not loaded");
-      await emailjs.send(EMAILJS.serviceId, EMAILJS.templateId, {
-        from_name: $("#name").value.trim(),
-        reply_to: $("#email").value.trim(),
-        subject: topic(),
-        message: msg.value.trim(),
+      const name = $("#name").value.trim();
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfolio: ${topic()} — from ${name}`,
+          from_name: "Kamarali Portfolio",
+          name,
+          email: $("#email").value.trim(),
+          topic: topic(),
+          message: msg.value.trim(),
+          botcheck: "",
+        }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.message || `HTTP ${res.status}`);
       form.reset();
       touched.clear();
       $$(".field", form).forEach((f) => f.classList.remove("is-valid", "is-invalid"));
